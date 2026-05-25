@@ -18,10 +18,6 @@ def main():
     if(not args.flag):
         print("cut: you must specify a list of bytes, characters, or fields")
         print("Try 'cut --help' for more information.")
-    elif(args.file.name == '<stdin>'):
-        # Standard Input
-        print("STDIN")
-        pass
     else:
         path = args.file
         cols = []
@@ -43,6 +39,9 @@ def main():
             spacer = args.spacer
         else:
             spacer = "\t"
+    
+        for i in range(len(cols)):
+            cols[i]-=1
 
         df = []
         for line in data:
